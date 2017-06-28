@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/instant_search.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="js/instant_search.js"></script>
+</head>
+<body>
+<!-- Instant Search -->
+<div id="search" ng-controller="InstantSearchController" ng-app="instantSearch">
+
+    <!-- 01. greeting -->
+    <div class="content_wrap">
+        <h3>01. greeting</h3>
+        <p id="greeting" ng-controller="GreetingController">{{greeting}}</p>
+    </div>
+
+    <!-- 02. Double -->
+    <div class="content_wrap">
+        <h3>02. Double</h3>
+        <div ng-controller="DoubleController">
+            Two times <input ng-model="num" />equals {{ duoble(num) }}
+        </div>
+    </div>
+
+    <!-- 03. Search List -->
+    <div class="content_wrap">
+        <h3>03. Search List</h3>
+        <div class="bar">
+            <input type="text" ng-model="searchString" placeholder="Enter your search terms" />
+        </div>
+        <ul>
+            <li ng-repeat="i in items | searchFor:searchString">
+                <a href="{{i.url}}"><img ng-src="{{i.image}}" /></a>
+                <p>{{i.title}}</p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 04. Spicy (button)-->
+    <div class="content_wrap">
+        <h3>04. Spicy (button)</h3>
+        <div ng-controller="SpicyController">
+            <input ng-model="customSpice" />
+            <button ng-click="chiliSpicy()">Chili</button>
+            <button ng-click="customSpicy()">Custom</button>
+            <p>The food is {{spice}} spicy!</p>
+        </div>
+    </div>
+
+    <!-- 05. Scope Inheritance -->
+    <div class="content_wrap">
+        <h3>05. Scope Inheritance</h3>
+        <div class="spicy">
+            <div ng-controller="MainController">
+                <p>Good {{timeOfDay}}, {{name}}!</p>
+
+                <div ng-controller="ChildController">
+                    <p>Good {{timeOfDay}}, {{name}}!</p>
+
+                    <div ng-controller="GrandChildController">
+                        <p>Good {{timeOfDay}}, {{name}}!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 06. watch -->
+    <div class="content_wrap">
+        <h3>06. watch</h3>
+        <div ng-controller="MainCtrl">
+            이름:
+            <input ng-model="name" /><br />
+            업데이트 횟수 : {{undated}}
+        </div>
+    </div>
+
+    <!-- 99. reference -->
+    <div class="content_wrap">
+        <h3>※reference</h3>
+        <a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/" target="_blank">http://tutorialzine.com/2013/08/learn-angularjs-5-examples/</a><br />
+        <a href="http://www.nextree.co.kr/p8890/" target="_blank">http://www.nextree.co.kr/p8890/</a><br />
+        <a href="https://docs.angularjs.org/guide/controller" target="_blank">https://docs.angularjs.org/guide/controller</a><br />
+        <a href="http://palpit.tistory.com/810" target="_blank">http://palpit.tistory.com/810</a><br />
+        <a href="https://www.w3schools.com/angular/angular_events.asp" target="_blank">https://www.w3schools.com/angular/angular_events.asp</a><br />
+        <a href="http://www.mimul.com/pebble/default/2014/09/14/1410669616494.html" target="_blank">http://www.mimul.com/pebble/default/2014/09/14/1410669616494.html (이론 多)</a><br />
+        <a href="http://mobicon.tistory.com/270" target="_blank">http://mobicon.tistory.com/270 (이론 多)</a>
+    </div>
+</div>
+</body>
+</html>

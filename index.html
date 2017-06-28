@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body ng-app>
+    <!-- 01. navigation -->
+    <div class="content_wrap">
+        <h3>01. navigation</h3>
+        <div id="main_gnb">
+            <nav class="{{active}}" ng-click="$event.preventDefault()">
+                <a href="#" class="home" ng-click="active='home'">HOME</a>
+                <a href="#" class="projects" ng-click="active='projects'">PROJECT</a>
+                <a href="#" class="services" ng-click="active='services'">SERVICES</a>
+                <a href="#" class="contact" ng-click="active='contact'">CONTACT</a>
+            </nav>
+            <p ng-hide="active">Please click a menu item</p>
+            <p ng-show="active">You chose <strong>{{active}}</strong></p>
+        </div>
+    </div>
+
+    <!-- 02. Inline Editor -->
+    <div class="content_wrap">
+        <h3>02. Inline Editor</h3>
+        <div id="main" ng-controller="InlineEditorController" ng-click="hideTooltip()">
+            <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltip">
+                <input type="text" ng-model="value" />
+            </div>
+            <p ng-click="toggleTooltip($event)">{{value}}</p>
+        </div>
+    </div>
+
+
+    <!-- 03. Order Form : price updated in real time-->
+    <div class="content_wrap">
+        <h3>03. Order Form : price updated in real time</h3>
+        <form ng-controller="OrderFormController" class="price">
+            <h1>Services</h1>
+            <ul>
+                <li ng-repeat="service in services" ng-click="toggleActive(service)" ng-class="{active:service.active}">
+                    {{service.name}}<span>{{service.price | currency}}</span>
+                </li>
+            </ul>
+            <div class="total">
+                Total: <span>{{total() | currency}}</span>
+            </div>
+        </form>
+    </div>
+
+    <!-- 99. reference -->
+    <div class="content_wrap">
+        <h3>※reference</h3>
+        <a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/" target="_blank">http://tutorialzine.com/2013/08/learn-angularjs-5-examples/</a><br />
+        <a href="http://www.nextree.co.kr/p8890/" target="_blank">http://www.nextree.co.kr/p8890/</a><br />
+        <a href="https://docs.angularjs.org/guide/controller" target="_blank">https://docs.angularjs.org/guide/controller</a><br />
+        <a href="http://palpit.tistory.com/810" target="_blank">http://palpit.tistory.com/810</a><br />
+        <a href="https://www.w3schools.com/angular/angular_events.asp" target="_blank">https://www.w3schools.com/angular/angular_events.asp</a><br />
+        <a href="http://www.mimul.com/pebble/default/2014/09/14/1410669616494.html" target="_blank">http://www.mimul.com/pebble/default/2014/09/14/1410669616494.html (이론 多)</a><br />
+        <a href="http://mobicon.tistory.com/270" target="_blank">http://mobicon.tistory.com/270 (이론 多)</a>
+    </div>
+
+
+</body>
+</html>
